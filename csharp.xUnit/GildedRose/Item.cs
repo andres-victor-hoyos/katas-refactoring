@@ -12,20 +12,14 @@ public class Item
     {
         UpdateQuality();
         DecrementSellIn();
-        DecrementQuantityIfSellInMayorZero();
+        DegradeIfExpired();
     }
 
-    protected virtual void DecrementQuantityIfSellInMayorZero()
+    protected virtual void DegradeIfExpired()
     {
         if (this.SellIn >= 0)
             return;
         DecrementQuantity();
-    }
-
-
-    protected bool isBackstagePasses()
-    {
-        return this.Name == "Backstage passes to a TAFKAL80ETC concert";
     }
   
     protected virtual void IncrementQuality()
@@ -49,22 +43,17 @@ public class Item
 
     protected void UpdateQuality()
     {
-        IncrementOrDecrementQuality();
+        AdjustQualityForToday();
     }
 
-    protected virtual void IncrementOrDecrementQuality()
+    protected virtual void AdjustQualityForToday()
     {
         DecrementQuantity();
     }
     protected virtual void DeterminateIncrementQuality()
     {
         IncrementQuality();
-    }
-
-    protected virtual void DecrementQualityOfItem()
-    {
-        DecrementQuantity();
-    }
+    }  
 
     protected bool isMaxQuality()
     {
@@ -72,7 +61,7 @@ public class Item
     }
 }
 
-class SulfurasHandOfRagnaros : Item
+public class SulfurasHandOfRagnaros : Item
 {
     protected override void DecrementSellIn()
     {
@@ -85,7 +74,7 @@ class SulfurasHandOfRagnaros : Item
     }
 }
 
-class BackstagePasses : Item
+public class BackstagePasses : Item
 {
     protected override void IncrementQuality()
     {
@@ -107,7 +96,7 @@ class BackstagePasses : Item
         IncrementQuality();
     }
 
-    protected override void IncrementOrDecrementQuality()
+    protected override void AdjustQualityForToday()
     {
         IncrementQuality();
     }
@@ -126,7 +115,7 @@ public class AgedBrie : Item
         DecrementQuantity();
     } 
 
-    protected override void IncrementOrDecrementQuality()
+    protected override void AdjustQualityForToday()
     {
         IncrementQuality();
     }   
