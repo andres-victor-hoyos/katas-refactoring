@@ -63,6 +63,10 @@ public class Item
 
 public class SulfurasHandOfRagnaros : Item
 {
+    public SulfurasHandOfRagnaros()
+    {
+        Name = "Sulfuras, Hand of Ragnaros";
+    }
     protected override void DecrementSellIn()
     {
         ;
@@ -76,6 +80,10 @@ public class SulfurasHandOfRagnaros : Item
 
 public class BackstagePasses : Item
 {
+    public BackstagePasses()
+    {
+        Name="Backstage passes to a TAFKAL80ETC concert";
+    }
     protected override void IncrementQuality()
     {
         base.IncrementQuality();
@@ -105,6 +113,10 @@ public class BackstagePasses : Item
 
 public class AgedBrie : Item
 {
+    public AgedBrie()
+    {
+        Name = "Aged Brie";
+    }
     protected override void DecrementQuantity()
     {
         IncrementQuality();
