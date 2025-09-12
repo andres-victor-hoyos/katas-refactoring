@@ -2,13 +2,19 @@ namespace VideoStore.Models;
 
 public class Customer
 {
+
     public string Name { get; set; }
-    public List<Rental> Rentals { get; set; }
+    private List<Rental> rentals;
 
     public Customer(string name)
     {
         this.Name = name;
-        this.Rentals = new List<Rental>();
+        this.rentals = new List<Rental>();
+    }
+
+    public void AddRental(Rental rental)
+    {
+        this.rentals.Add(rental);
     }
 
     public string Statement()
@@ -16,7 +22,7 @@ public class Customer
         double totalAmount = 0;
         int frequentRenterPoints = 0;
         var result = $"Rental Record for {Name}\n";
-        foreach (var rental in Rentals)
+    foreach (var rental in rentals)
         {
             double thisAmount = 0;
             switch (rental.Movie.PriceCode)
