@@ -25,7 +25,7 @@ public class Customer
         foreach (var rental in this.rentals)
         {
             double thisAmount = 0;
-            thisAmount = this.amountFor(rental);
+            thisAmount = rental.getCharge();
             frequentRenterPoints++;
             if (rental.Movie.PriceCode == 1 && rental.DaysRented > 1)
                 frequentRenterPoints++;
@@ -36,10 +36,4 @@ public class Customer
         result += $"You earned {frequentRenterPoints} frequent renter points";
         return result;
     }
-
-    private double amountFor(Rental rental)
-    {
-        return rental.getCharge();
-    }
-    
 }
