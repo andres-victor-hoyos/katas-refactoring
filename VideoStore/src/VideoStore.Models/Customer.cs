@@ -24,7 +24,8 @@ public class Customer
         var result = $"Rental Record for {Name}\n";
         foreach (var rental in this.rentals)
         {
-                double thisAmount = GetRentalAmount(rental);
+            double thisAmount = 0;
+            thisAmount = this.amountFor(rental);
             frequentRenterPoints++;
             if (rental.Movie.PriceCode == 1 && rental.DaysRented > 1)
                 frequentRenterPoints++;
@@ -36,48 +37,26 @@ public class Customer
         return result;
     }
 
-        private double GetRentalAmount(Rental rental)
-        {
-            double thisAmount = 0;
-            switch (rental.Movie.PriceCode)
-            {
-                case Movie.REGULAR:
-                    thisAmount += 2;
-                    if (rental.DaysRented > 2)
-                        thisAmount += (rental.DaysRented - 2) * 1.5;
-                    break;
-                case Movie.NEW_RELEASE:
-                    thisAmount += rental.DaysRented * 3;
-                    break;
-                case Movie.CHILDRENS:
-                    thisAmount += 1.5;
-                    if (rental.DaysRented > 3)
-                        thisAmount += (rental.DaysRented - 3) * 1.5;
-                    break;
-            }
-            return thisAmount;
-        }
-
     private double amountFor(Rental rental)
     {
-        double thisAmount = 0;
+        double result = 0;
         switch (rental.Movie.PriceCode)
         {
             case Movie.REGULAR:
-                thisAmount += 2;
+                result += 2;
                 if (rental.DaysRented > 2)
-                    thisAmount += (rental.DaysRented - 2) * 1.5;
+                    result += (rental.DaysRented - 2) * 1.5;
                 break;
             case Movie.NEW_RELEASE:
-                thisAmount += rental.DaysRented * 3;
+                result += rental.DaysRented * 3;
                 break;
             case Movie.CHILDRENS:
-                thisAmount += 1.5;
+                result += 1.5;
                 if (rental.DaysRented > 3)
-                    thisAmount += (rental.DaysRented - 3) * 1.5;
+                    result += (rental.DaysRented - 3) * 1.5;
                 break;
         }
 
-        return thisAmount;
+        return result;
     }
 }
