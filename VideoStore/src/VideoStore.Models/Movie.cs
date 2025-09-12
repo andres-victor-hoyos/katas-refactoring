@@ -1,8 +1,7 @@
-namespace VideoStore.Models
+
+
+public class Movie
 {
-    public class Movie
-    {
-        public string Title { get; set; }
-        public int PriceCode { get; set; }
-    }
+    public string Title { get; set; }
+    public int PriceCode { get; set; }
 }
