@@ -11,12 +11,6 @@ public class Customer
         this.Rentals = new List<Rental>();
     }
 
-    public Customer(string name, List<Rental> rentals)
-    {
-        this.Name = name;
-        this.Rentals = rentals ?? new List<Rental>();
-    }
-
     public string Statement()
     {
         double totalAmount = 0;
@@ -27,15 +21,15 @@ public class Customer
             double thisAmount = 0;
             switch (rental.Movie.PriceCode)
             {
-                case 0: // Regular
+                case Movie.REGULAR:
                     thisAmount += 2;
                     if (rental.DaysRented > 2)
                         thisAmount += (rental.DaysRented - 2) * 1.5;
                     break;
-                case 1: // New Release
+                case Movie.NEW_RELEASE:
                     thisAmount += rental.DaysRented * 3;
                     break;
-                case 2: // Children
+                case Movie.CHILDRENS:
                     thisAmount += 1.5;
                     if (rental.DaysRented > 3)
                         thisAmount += (rental.DaysRented - 3) * 1.5;
