@@ -33,4 +33,12 @@ public class Rental
 
         return result;
     }
+
+    public int getFrecuentRenterPoint()
+    {
+        int result = 1;
+        if (this.Movie.PriceCode == 1 && this.DaysRented > 1)
+            result++;
+        return result;
+    }
 }

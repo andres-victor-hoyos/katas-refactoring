@@ -1,3 +1,5 @@
+using System.Net;
+
 namespace VideoStore.Models;
 
 public class Customer
@@ -26,9 +28,7 @@ public class Customer
         {
             double thisAmount = 0;
             thisAmount = rental.getCharge();
-            frequentRenterPoints++;
-            if (rental.Movie.PriceCode == 1 && rental.DaysRented > 1)
-                frequentRenterPoints++;
+            frequentRenterPoints += rental.getFrecuentRenterPoint();
             result += $"\t{rental.Movie.Title}\t{rental.getCharge()}\n";
             totalAmount += rental.getCharge();
         }
@@ -36,4 +36,5 @@ public class Customer
         result += $"You earned {frequentRenterPoints} frequent renter points";
         return result;
     }
+    
 }
