@@ -29,8 +29,8 @@ public class Customer
             frequentRenterPoints++;
             if (rental.Movie.PriceCode == 1 && rental.DaysRented > 1)
                 frequentRenterPoints++;
-            result += $"\t{rental.Movie.Title}\t{thisAmount}\n";
-            totalAmount += thisAmount;
+            result += $"\t{rental.Movie.Title}\t{rental.getCharge()}\n";
+            totalAmount += rental.getCharge();
         }
         result += $"Amount owed is {totalAmount}\n";
         result += $"You earned {frequentRenterPoints} frequent renter points";
