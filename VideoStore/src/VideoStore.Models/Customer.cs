@@ -21,16 +21,14 @@ public class Customer
 
     public string Statement()
     {
-        int frequentRenterPoints = 0;
-        var statement = $"Rental Record for {Name}\n";
+        var result = $"Rental Record for {Name}\n";
         foreach (var rental in this.rentals)
         {
-            frequentRenterPoints += rental.getFrecuentRenterPoint();
-            statement += $"\t{rental.Movie.Title}\t{rental.getCharge()}\n";
+            result += $"\t{rental.Movie.Title}\t{rental.getCharge()}\n";
         }
-        statement += $"Amount owed is {this.getTotalCharge()}\n";
-        statement += $"You earned {frequentRenterPoints} frequent renter points";
-        return statement;
+        result += $"Amount owed is {this.getTotalCharge()}\n";
+        result += $"You earned {this.getTotalGetFrecuentPoints()} frequent renter points";
+        return result;
     }
 
     private double getTotalCharge()
@@ -39,6 +37,16 @@ public class Customer
         foreach (var rental in this.rentals)
         {
             result += rental.getCharge();
+        }
+        return result;
+    }
+
+    private double getTotalGetFrecuentPoints()
+    {
+        double result = 0;
+        foreach (var rental in this.rentals)
+        {
+            result += rental.getFrecuentRenterPoint();
         }
         return result;
     }    
