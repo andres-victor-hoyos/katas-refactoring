@@ -21,20 +21,25 @@ public class Customer
 
     public string Statement()
     {
-        double totalAmount = 0;
         int frequentRenterPoints = 0;
-        var result = $"Rental Record for {Name}\n";
+        var statement = $"Rental Record for {Name}\n";
         foreach (var rental in this.rentals)
         {
-            double thisAmount = 0;
-            thisAmount = rental.getCharge();
             frequentRenterPoints += rental.getFrecuentRenterPoint();
-            result += $"\t{rental.Movie.Title}\t{rental.getCharge()}\n";
-            totalAmount += rental.getCharge();
+            statement += $"\t{rental.Movie.Title}\t{rental.getCharge()}\n";
         }
-        result += $"Amount owed is {totalAmount}\n";
-        result += $"You earned {frequentRenterPoints} frequent renter points";
-        return result;
+        statement += $"Amount owed is {this.getTotalCharge()}\n";
+        statement += $"You earned {frequentRenterPoints} frequent renter points";
+        return statement;
     }
-    
+
+    private double getTotalCharge()
+    {
+        double result = 0;
+        foreach (var rental in this.rentals)
+        {
+            result += rental.getCharge();
+        }
+        return result;
+    }    
 }
