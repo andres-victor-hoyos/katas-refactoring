@@ -2,8 +2,8 @@
 
 public class Rental
 {
-    public Movie Movie { get; }
-    public int DaysRented { get; }
+    private int DaysRented { get; }
+    public Movie Movie { get; }    
 
     public Rental(Movie movie, int daysRented)
     {
@@ -36,9 +36,8 @@ public class Rental
 
     public int getFrecuentRenterPoint()
     {
-        int result = 1;
-        if (this.Movie.PriceCode == 1 && this.DaysRented > 1)
-            result++;
-        return result;
+        return this.Movie.getFrecuentRenterPoint(DaysRented);
     }
+
+    
 }
