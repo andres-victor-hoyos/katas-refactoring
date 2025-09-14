@@ -1,3 +1,5 @@
+namespace VideoStore.Models;
+// ...existing code...
 
 
 public class Movie
@@ -35,7 +37,7 @@ public class Movie
         }
         return result;
     }
-    
+
     public int getFrecuentRenterPoint(int days)
     {
         int result = 1;

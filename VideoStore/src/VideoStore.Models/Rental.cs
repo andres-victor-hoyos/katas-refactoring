@@ -1,3 +1,5 @@
+namespace VideoStore.Models;
+// ...existing code...
 
 
 public class Rental
@@ -16,12 +18,8 @@ public class Rental
         return this.Movie.getCharge(this.DaysRented);
     }
 
-
-
     public int getFrecuentRenterPoint()
     {
         return this.Movie.getFrecuentRenterPoint(DaysRented);
-    }
-
-    
+    }    
 }
