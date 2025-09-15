@@ -1,5 +1,4 @@
 namespace VideoStore.Models;
-using System.Net;
 
 public class Customer
 {
