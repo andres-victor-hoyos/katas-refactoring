@@ -2,11 +2,6 @@ namespace VideoStore.Models;
 
 public class RegularPrice : Price
 {
-    public override int GetPriceCode()
-    {
-        return 0;
-    }
-
     public override double getCharge(int days)
     {
         double result = 2;
