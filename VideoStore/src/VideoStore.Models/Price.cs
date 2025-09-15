@@ -3,10 +3,10 @@ namespace VideoStore.Models;
 
 public abstract class Price
 {
-    public abstract int GetPriceCode();
+    private const int FREQUENT_RENTER_POINTS = 1;
     public virtual int getFrequentRenterPoints(int days)
     {
-        return 1;
+        return FREQUENT_RENTER_POINTS;
     }
     public abstract double getCharge(int days);
 }
