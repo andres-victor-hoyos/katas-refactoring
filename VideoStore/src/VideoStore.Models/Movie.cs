@@ -4,16 +4,13 @@ namespace VideoStore.Models;
 
 public class Movie
 {
-    public const int REGULAR = 0;
-    public const int NEW_RELEASE = 1;
-    public const int CHILDRENS = 2;
     public string Title { get; }
     private Price Price { get; set; } = new RegularPrice();
 
-    public Movie(string title, int priceCode)
+    public Movie(string title, Price price)
     {
         this.Title = title;
-        this.SetPriceCode(priceCode);
+        this.Price = price;
     }
 
     public double getCharge(int days)
@@ -24,17 +21,5 @@ public class Movie
     public int getFrecuentRenterPoint(int days)
     {
         return this.Price.getFrequentRenterPoints(days);
-    }
-
-
-    private void SetPriceCode(int priceCode)
-    {
-        switch (priceCode)
-        {
-            case Movie.REGULAR : this.Price = new RegularPrice(); break;
-            case Movie.NEW_RELEASE: this.Price = new NewReleasePrice(); break;
-            case Movie.CHILDRENS: this.Price = new ChildrenPrice();break;
-            default: break;
-        }
     }
 }
